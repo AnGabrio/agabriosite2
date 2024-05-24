@@ -2,8 +2,10 @@
 title: "Biography"
 about:
   id: me
-  template: broadside
-  image: img/profile.png
+  template: trestles
+  image: img/Picture_AG.png
+  image-width: 15em
+  image-shape: round
 ---
 
 :::{#me}
