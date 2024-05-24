@@ -3,7 +3,7 @@ title: "Biography"
 about:
   id: me
   template: broadside
-  image: img/photo.jpeg
+  image: img/photo.png
 ---
 
 :::{#me}
