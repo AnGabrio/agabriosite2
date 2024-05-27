@@ -1,0 +1,53 @@
+/*-- scss:defaults --*/
+
+$h2-font-size:          1.6rem !default;
+$headings-font-weight:  500 !default;
+$body-color:            black !default;
+$navbar-color-light:  rgba(34, 44, 117);
+
+.callout.callout-style-default .callout-body {
+  background-color: rgb(229, 237, 250);
+}
+
+/*-- scss:rules --*/
+
+.title {
+  font-size: 20px;
+  font-style: normal;
+  color: grey;
+  font-family: Montserrat;
+  font-weight: 300;
+  font-variant: small-caps;
+}
+
+
+.goals {
+  margin: 1em 0;
+  border: 2px solid gray;
+  border-left: 10px solid white; 
+  border-radius: 10px;
+}
+
+.goals-header {
+  margin-left: 0em;
+  padding-left:  60px;
+  padding-top:  5px;
+  padding-bottom: 0.1em;
+  color: black;
+  background-color: rgb(229, 237, 250);
+  border-top-right-radius: 10px;
+  font-size: 1em;
+  font-family: Montserrat;
+  font-weight: bold;
+  background-size: 40px;
+  background-repeat: no-repeat;
+  background-position: 15px center;
+}
+
+.goals-container {
+  padding-top: 5px;
+  padding-left: 10px;
+  color: black;
+  background-color: white;
+  border-bottom-right-radius: 10px;
+}
