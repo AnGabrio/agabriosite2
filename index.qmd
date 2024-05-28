@@ -12,7 +12,7 @@ about:
      href: https://x.com/andreagabrio?lang=en
    - icon: ""
      text: "{{< iconify fa6-brands github >}}"
-     href: https://github.com/AnGabrio/agabriosite2
+     href: https://github.com/AnGabrio
    - icon: ""
      text: "{{< iconify fa6-brands google-scholar >}}"
      href: https://scholar.google.co.uk/citations?user=2fPE3iAAAAAJ&hl=en
@@ -46,8 +46,6 @@ I have collaborated with the Statistics for Health Economic Evaluation research 
 
 I have also collaborated with the Health Economics Analysis and Research methodology Team in the [Institute for Clinical Trials and Methodology](https://www.ucl.ac.uk/clinical-trials-and-methodology/) at UCL, working primarily with the members of the [Priment Clinical Trials Unit](https://www.ucl.ac.uk/clinical-trials-and-methodology/about/priment). The group focuses on the development of methodological tools for the analysis of the economic components in randomised control trials across a wide range of clinical areas and is formed by a group of interdisciplinary and varied experience.
 
-:::
-
 :::{.callout-note icon=false}
 
 ## {{< fa chess-king >}} King's note ! {{< fa chess-king >}}
@@ -56,3 +54,85 @@ I am a huge fan of **RStudio** and its tools, such as [Rmarkdown](https://rmarkd
 
 :::
 
+:::: {.columns}
+
+::: {.column width="45%"}
+**Interests**
+
+* Missing Data
+
+* Bayesian Statistics
+
+* Health Economics
+
+* Longitudinal Data
+
+* Statistical Methods for Health and Medical Data
+
+:::
+
+::: {.column width="55%"}
+**Education**
+
+{{< fa user-graduate >}} [PhD in Statistics, 2019]{style="font-weight: normal"}
+: [University College London (UK)]{style="font-size: 70%"}
+
+{{< fa user-graduate >}} [MSc in Statistics and Econometrics, 2015]{style="font-weight: normal"}
+: [University of Essex (UK)]{style="font-size: 70%"}
+
+{{< fa user-graduate >}} [MSc in Applied Economics, 2014]{style="font-weight: normal"}
+: [University of Pavia (Italy)]{style="font-size: 70%"}
+
+{{< fa user-graduate >}} [BSc in Economics, 2012]{style="font-weight: normal"}
+: [University of Pavia (Italy)]{style="font-size: 70%"}
+
+:::
+
+::::
+
+:::
+
+<br/>
+
+:::: {style="background-color: #e6e6e6"}
+
+:::: {.columns}
+
+::: {.column width="10%"}
+[**Contact**]{style="font-size: 1.5rem"}
+
+:::
+
+::: {.column width="20%"}
+
+:::
+
+::: {.column width="70%"}
+{{< fa envelope >}} [ a.gabrio@maastrichtuniversity.nl]{style="font-weight: normal"}
+
+{{< fa phone >}} [ +31 (0)43 38 82395]{style="font-weight: normal"}
+
+{{< fa map-marker >}} [ Peter Debeyeplein 1 (first floor), Maastricht, NL 6229 HA]{style="font-weight: normal"}
+
+{{< iconify fa6-brands twitter >}} [ AndreaGabrio](https://x.com/andreagabrio?lang=en){style="font-weight: normal"}
+
+{{< iconify fa6-brands github >}} [ AnGabrio](https://github.com/AnGabrio){style="font-weight: normal"}
+
+{{< iconify fa6-brands linkedin >}} [ Andrea Gabrio](https://nl.linkedin.com/in/andrea-gabrio-730514bb/en){style="font-weight: normal"}
+
+{{< iconify fa6-brands google-scholar >}} [ Andrea Gabrio](https://scholar.google.co.uk/citations?user=2fPE3iAAAAAJ&hl=en){style="font-weight: normal"}
+
+{{< iconify fa6-brands orcid >}} [ Andrea Gabrio](https://orcid.org/0000-0002-7650-4534){style="font-weight: normal"}
+
+:::
+
+```{r, eval=TRUE, echo=FALSE, message=FALSE, warning=FALSE}
+library(leaflet)
+leaflet() %>%
+  addTiles() %>%  # Add default OpenStreetMap map tiles
+  addMarkers(lng=5.71185, lat=50.83505, popup="Peter Debeyeplein 1 (first floor)")
+```
+
+::::
+
+::::
