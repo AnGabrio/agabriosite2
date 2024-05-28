@@ -4,6 +4,7 @@ project:
   
 website:
   title: "Andrea Gabrio"
+  favicon: img/icon.png
   navbar:
     background: rgba(34, 44, 117)
     foreground: white
