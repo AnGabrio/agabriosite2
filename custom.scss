@@ -4,10 +4,26 @@ $h2-font-size:          1.6rem !default;
 $headings-font-weight:  500 !default;
 $body-color:            black !default;
 $navbar-color-light:  rgba(34, 44, 117);
+$grid-columns:                12 !default;
+$grid-gutter-width:           1.5rem !default;
+$grid-row-columns:            6 !default;
 
 .callout.callout-style-default .callout-body {
   background-color: rgb(229, 237, 250);
 }
+
+.about-contents {
+  flex-grow: 3 !important;
+  flex-shrink: 0 !important;
+  flex-basis: 80% !important;
+}
+
+.about-entity {
+  flex-grow: 0 !important;
+  flex-shrink: 3 !important;
+  flex-basis: 20% !important;
+}
+
 
 /*-- scss:rules --*/
 

@@ -7,17 +7,28 @@ about:
   image-width: 15em
   image-shape: round
   links:
-   - icon: twitter
+   - icon: ""
+     text: "{{< iconify fa6-brands twitter >}}"
      href: https://x.com/andreagabrio?lang=en
-   - icon: github
+   - icon: ""
+     text: "{{< iconify fa6-brands github >}}"
      href: https://github.com/AnGabrio/agabriosite2
-   - icon: ai-google-scholar
+   - icon: ""
+     text: "{{< iconify fa6-brands google-scholar >}}"
      href: https://scholar.google.co.uk/citations?user=2fPE3iAAAAAJ&hl=en
-   - icon: bi bi-linkedin
+   - icon: ""
+     text: "{{< iconify fa6-brands linkedin >}}"
      href: https://nl.linkedin.com/in/andrea-gabrio-730514bb/en
+   - icon: ""
+     text: "{{< ai arxiv >}}"
+     href: https://arxiv.org/user/ 
+   - icon: ""
+     text: "{{< iconify fa6-brands orcid >}}"
+     href: https://orcid.org/0000-0002-7650-4534   
+   - icon: ""
+     text: "{{< iconify fa6-brands r-project >}}"
+     href: https://posit.co/download/rstudio-desktop/
 ---
-
-
 
 :::{#me}
 

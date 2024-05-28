@@ -21,6 +21,10 @@ format:
     theme: 
       - cosmo
       - custom.scss
+    grid: 
+      body-width: 2000px
+      sidebar-width: 200px
+      margin-width: 200px
     mainfont: Montserrat
     fontsize: 1.2rem
     fontcolor: black
