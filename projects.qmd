@@ -1,9 +1,48 @@
 ---
-title: "Projects"
+title: "Research"
+format: dashboard
+fig-align: center
+scrolling: true
 ---
 
-## Project 1
+# {.sidebar width=25%}
 
-## Project 2
+## [My Research]{style="font-size: 1.6rem"}
 
-## Project 3
+[I am a member of the research groups [**Statistics for Health Economics**](https://egon.stats.ucl.ac.uk/research/statistics-health-economics/) at UCL, working on both methodological and applied projects. My main areas of interests are statistical modelling for missing data, statistical methods applied to health economic evaluations, and Bayesian modelling in general.]{style="font-size: 1.2rem"}
+
+# All 
+
+::: {.card}
+[[A review of heath economic evaluation practice in the Netherlands: are we moving forward?](research/reviewNL/reviewNL.qmd)]{style="font-size: 1.5rem; font-weight: bold"}
+
+![&nbsp;](img/heatmap_software.png){fig-align="center" width=40%}
+
+[In the Netherlands, the Dutch National Health Care Institute (Zorginstituut Nederland or ZIN) is the body in charge of issuing recommendations and guidance on good practice in health economic evaluations, not just for pharmaceutical products, but also in relation to other fields of application such as medical devices, long-term care and forensics.]{style="font-size: 0.9rem; font-weight: lighter"}
+
+[{{< fa file-pdf >}}](https://www.cambridge.org/core/journals/health-economics-policy-and-law/article/abs/review-of-heath-economic-evaluation-practice-in-the-netherlands-are-we-moving-forward/8A4D0D3A9E7EBC83A65B4283D170FCC6){style="text-align: center; font-size: 2rem"}
+
+:::
+
+
+## Data
+
+```{r}
+knitr::kable(head(mtcars))
+```
+
+## Info
+
+::: {.card title="Interactive figures"}
+[Link to visualisation page](#visualisation)
+
+Text and table
+:::
+
+::: {.card title="Interactive figures"}
+Text and tables
+:::
+
+# Missing Data 
+
+
