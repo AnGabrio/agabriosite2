@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Andrea Gabrio - A review of heath economic evaluation practice in the Netherlands: are we moving forward?</title>
+<title>Andrea Gabrio - Missingness Methods in trial-based Cost-Effectiveness Analysis</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -40,6 +40,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/quarto-contrib/academicons-1.9.2/all.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/academicons-1.9.2/size.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -70,6 +72,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -115,11 +146,12 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#the-zin-2016-guidelines" id="toc-the-zin-2016-guidelines" class="nav-link" data-scroll-target="#the-zin-2016-guidelines">The ZIN 2016 guidelines</a></li>
-  <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods">Methods</a></li>
-  <li><a href="#analytic-approaches" id="toc-analytic-approaches" class="nav-link" data-scroll-target="#analytic-approaches">Analytic approaches</a></li>
-  <li><a href="#missing-data-methods" id="toc-missing-data-methods" class="nav-link" data-scroll-target="#missing-data-methods">Missing data methods</a></li>
-  <li><a href="#discussion" id="toc-discussion" class="nav-link" data-scroll-target="#discussion">Discussion</a></li>
+  <li><a href="#quality-evaluation-scheme" id="toc-quality-evaluation-scheme" class="nav-link" data-scroll-target="#quality-evaluation-scheme">Quality Evaluation Scheme</a></li>
+  <li><a href="#summary-of-the-findings" id="toc-summary-of-the-findings" class="nav-link" data-scroll-target="#summary-of-the-findings">Summary of the findings</a>
+  <ul class="collapse">
+  <li><a href="#descriptive-review" id="toc-descriptive-review" class="nav-link" data-scroll-target="#descriptive-review">Descriptive Review</a></li>
+  <li><a href="#quality-assessment" id="toc-quality-assessment" class="nav-link" data-scroll-target="#quality-assessment">Quality assessment</a></li>
+  </ul></li>
   <li><a href="#conclusions" id="toc-conclusions" class="nav-link" data-scroll-target="#conclusions">Conclusions</a></li>
   </ul>
 </nav>
@@ -129,7 +161,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">A review of heath economic evaluation practice in the Netherlands: are we moving forward?</h1>
+<h1 class="title">Missingness Methods in trial-based Cost-Effectiveness Analysis</h1>
 </div>
 
 
@@ -148,49 +180,59 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
-<p>In the Netherlands, the Dutch National Health Care Institute (Zorginstituut Nederland or ZIN) is the body in charge of issuing recommendations and guidance on good practice in health economic evaluations, not just for pharmaceutical products, but also in relation to other fields of application such as medical devices, long-term care and forensics. In 2016, ZIN issued an update on the guidance for health economic evaluations, which aggregated into a single document and revised three separately published guidelines for pharmacoeconomics evaluation, outcomes research and costing manual. The novel aspects and future policy direction introduced by these guidelines have already been object of discussion, particularly with respect to the potential impact and concerns associated with their implementation in standard health economics practice in the Netherlands. Given the importance covered by these guidelines, an assessment of their impact on economic evaluation practice is desirable.</p>
-<p>The objective of this paper was to review the evolution of health economic evaluation practice in the Netherlands before and after the introduction of the ZIN’s 2016 guidelines. Based on some key components within the health economics framework addressed by the new guidelines, we specifically focus on reviewing the statistical methods, missing data methods and software implemented by health economists. Given the intrinsic complexity of analysing health economics data, the choice of the analytical approaches to deal with these problems as well as transparent information on their implementation is crucial in determining the degree of confidence that decision-makers should have towards cost-effectiveness results obtained from these studies</p>
+<p>We performed a systematic literature review that assesses the quality of the information reported and type of methods used to handle missing outcome data in trial-based economic evaluations. The purpose of this review is to critically appraise the current literature in within-trial CEAs with respect to the quality of the information reported and the methods used to deal with missingness for both effectiveness and costs. The review complements previous work, covering 2003-2009 (88 articles) with a new systematic review, covering 2009-2015 (81 articles) and focuses on two perspectives.</p>
+<p>First, we provide guidelines on how the information about missingness and related methods should be presented to improve the reporting and handling of missing data. We propose to address this issue by means of a <em>Quality Evaluation Scheme</em> (QES), providing a structured approach that can be used to guide the collection of information, formulation of the assumptions, choice of methods, and considerations of possible limitations for the given missingness problem. Second, we review the description of the missing data, the statistical methods used to deal with them and the quality of the judgement underpinning the choice of these methods.</p>
 </section>
-<section id="the-zin-2016-guidelines" class="level1">
-<h1>The ZIN 2016 guidelines</h1>
-<p>The main objective of the guidelines is to ensure the comparability and quality of health economic evaluations in the Netherlands, therefore facilitating the task of the decision-maker regarding the reimbursement of new health care interventions. Following the example of guidelines issued by decision-making bodies in other countries, including the National Institute for Health and Care Excellence (NICE) in the UK, the recommended features for economic evaluations are summarised in a typical scenario referred to as ‘reference case’, although deviations from it are allowed when properly justified.</p>
-<p>Based on the structure of the reference case, four essential components of a health economic evaluation are identified: framework, analytic approach, input data and reporting. For the purpose of the review, we only focus on these components in the reference case as the main elements upon which evaluating health economics practice.</p>
-</section>
-<section id="methods" class="level1">
-<h1>Methods</h1>
-<p>We performed a bibliographic search in June 2021 using search engines of two online full-text journal repositories: (1) PubMed and (2) Zorginstituut. These sources were chosen to maximise the number of studies that could be accessed given the scoping nature of the review and the lack of a search strategy based on a pre-defined and rigid approach typical of systematic reviews. Articles were considered eligible for the review only if they were cost-effectiveness or cost-utility analyses targeting a Dutch population. To allow the inclusion of a reasonable amount of studies, the key words used in the search strategy were (cost-effectiveness OR cost-utility OR economic evaluation), and we targeted studies published between January 2016 and April 2021.</p>
-</section>
-<section id="analytic-approaches" class="level1">
-<h1>Analytic approaches</h1>
-<p>Almost all reviewed empirical analyses used bootstrapping (95%), although the number of replications varied largely across the studies, with the most popular choices being 5000 (55%) followed by 2000 (29%). Studies showed even more variability in the choice of the methods used in combination with bootstrapping. Seven general classes of statistical approaches were identified, among which unadjusted methods were the most popular choice across both time periods. A clear change in the type of statistical methods used between the two periods is denoted by a strong decrease (from 64 to 39) in the number of unadjusted analyses in 2016–2020 compared to the earlier period, which is compensated by a rise in the number of adjusted analyses using either SUR or linear mixed effects model (LMM) methods.</p>
-<p>From <a href="#fig-heatmap" class="quarto-xref">Figure&nbsp;1</a> we can look at the different type and combination of software programs used as an indication of the implementation preferences of analysts for health economic evaluations. Although in principle the choice of software should have no impact on the quality of the statistical methods implemented, it has been highlighted how use of simpler software (e.g.&nbsp;spreadsheet calculators such as Excel) may become increasingly cumbersome for matching more realistic and therefore complex modelling requirements.</p>
-<div id="fig-heatmap" class="quarto-figure quarto-figure-center quarto-float anchored" width="60%" data-fig-align="center">
+<section id="quality-evaluation-scheme" class="level1">
+<h1>Quality Evaluation Scheme</h1>
+<p>In order to judge whether missing data in CEAs have been adequately handled, we assembled guidelines from previous review articles on how information relating to the missing data should be reported. In particular, we defined three broad components of the analysis that are related to the description of the missingness problem (Description), details of the methods used to address it (Methods) and a discussion on the uncertainty in the conclusions resulting from the missingness (Limitations). For each component, information that is considered to be vital for transparency is listed under <em>key considerations</em>, while other details that could usefully be provided as supplementary material are suggested under <em>optimal considerations</em>.</p>
+<p>Using the list of key considerations, we determine whether null (all key considerations absent), partial (one or more key considerations absent) or full (all key considerations present) information has been provided for each component. The set of key considerations is defined to ensure a full assessment of the impact that missingness may have on the final conclusions of the analysis with respect to all three components. However, providing a certain level of information on one component (e.g.&nbsp;full information on Description) typically has a different impact on the results with respect to providing the same level of information on another component (e.g.&nbsp;full information on Limitations). Based on this, we suggest computing a numerical score that weights each component by the impact that it may have on the final results to summarise the overall information provided on missingness.</p>
+<p>Different score values are calculated based on whether full, partial or null information content is provided in each component and by weighting the three components in a ratio of 3:2:1 (Description: Method: Limitations). This weighting scheme has been chosen according to the impact that each component is likely to have on the final conclusions based on assumptions that we deemed to be reasonable. Specifically, the Limitations component typically has the least importance among the three because of its limited impact on the conclusions. In the same way, the Description component has potentially a higher impact on the results than the Method component as it generally drives the choice for the initial assumptions about the missingness.</p>
+<p>Finally, the relevance of the scores in terms of decision analysis is mainly associated with a qualitative assessment of the articles. Therefore, we suggest converting the scores into ordered grades (A-E) to evaluate the studies based on the overall information reported on the handling of the missing data. Studies that are graded in the top categories should be associated with a higher degree of confidence in their results, whereas more caution should be given in the consideration of results coming from studies that are graded in the bottom categories. When qualitatively assessing the articles, the different grading assigned to each of them could be an indication of a lack in the robustness of the conclusions provided due to missingness uncertainty. With respect to the quality assessment of the studies, the aggregation of the quality scores on the components of the analysis (Description, Method and Limitations) into ordered grades could lead to some loss of information compared with the direct use of the quality scores on each component. However, merging the scores into a fewer number of categories ensures a relatively easy comparison of the quality of the information provided across the three analysis components and provides a useful indication about the different degree of confidence to assign to the results obtained by each study.</p>
+<p><a href="#fig-qes" class="quarto-xref">Figure&nbsp;2</a> below shows a visual representation of the grade (and score) assignment in the quality evaluation scheme. Although the importance between the different components is subjective, the chosen structure represents a reasonable and relatively straightforward assessment scheme.</p>
+<div id="fig-qes" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center" width="60%">
 <figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-heatmap-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="heatmap_software.png" class="img-fluid figure-img">
+<div aria-describedby="fig-qes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="review_qes.jpg" class="img-fluid figure-img">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-heatmap-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1: Heatmap of the combination of software programs used
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-qes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Quality Evaluation Scheme.
 </figcaption>
 </figure>
 </div>
-<p>The most popular software was SPSS, chosen by 87 (52%) of the studies, either in the base-case (33%) or secondary (19%) analyses, often used in combination with Excel or by itself. When either STATA (26%) or R (13%) was used in the base-case analysis, SPSS was still the most popular choice in secondary analyses. Other combinations of software were less frequently chosen, even though 38 (23%) of the studies were unclear about the software implemented.</p>
+<p>The articles reviewed for the two periods are presented and compared by type of analysis performed. First, the base-case methods are considered, i.e.&nbsp;those used in the main analysis. Second, any alternative methods in these analyses are discussed; when present, these assess the robustness of the results obtained in the main analysis against departures from the initial assumptions on missingness.</p>
 </section>
-<section id="missing-data-methods" class="level1">
-<h1>Missing data methods</h1>
-<p>Across both periods limited changes are observed in terms of order of choice for missing data methods, with MI being the most popular base-case analysis, followed by complete case analysis (CCA), as the most popular SA choice. However, two noticeable variations in the frequency of these methods are observed between the two periods. First, the proportion of studies using MI in the base-case analysis has considerably increased over time (from 28 to 39%), which is compensated by a decrease in the proportion of less advanced methods such as CCA (from 14 to 5%) and single imputation (SI) (from 21 to 16%). Second, the number of studies not clearly reporting the methods has also considerably decreased (from 12 to 5%). The observed trend between the two periods may be the result of the specific recommendations from the 2016 guidelines in regards to the ‘optimal’ missing data strategy, resulting in a more frequent adoption of MI techniques and, at the same time, a less frequent use of CCA in the base-case analysis. However, in contrast to these guidelines, a large number of studies still does not perform any SA to missing data assumptions (about 65% in 2010–2015 and 63% in 2016–2020).</p>
-<p>Most of the studies lie in the middle and lower parts of the plot, and are associated with a limited or sufficient quality of information. However, only a few of these studies rely on very strong and unjustified missing data assumptions, while the majority provides either adequate justifications or uses methods associated with weak assumptions. Only 11 (14%) studies are associated with both high-quality scores and less restrictive missingness assumptions. No study was associated with either full information or adequate justifications for the assumptions explored in base-case and sensitivity analysis.</p>
+<section id="summary-of-the-findings" class="level1">
+<h1>Summary of the findings</h1>
+<p>Our review is based on a sample of recently published studies and should therefore provide a picture of current missing data handling in within-trial CEAs. However, the quality assessment of the articles is based on the information reported in the articles. It is possible that authors had assessed the robustness of their conclusions to the missing data using alternative approaches that were not reported in the published version because of space limitations in journals. In these cases, it is important that on-line appendices and supplementary material are used to report these alternatives. In our literature review, information about missing data information and methods was available from <span class="math inline">\(4\)</span> and <span class="math inline">\(9\)</span> on-line supplementary materials for the period 2003-2009 and 2009-2015, respectively. Both the larger number of on-line materials and more detailed information reported about missingness handling in the analyses indicate an increased use of this tool in the later period (2009-2015) compared to the first period (2003-2009).</p>
+<section id="descriptive-review" class="level2">
+<h2 class="anchored" data-anchor-id="descriptive-review">Descriptive Review</h2>
+<div id="fig-qes" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center" width="60%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-qes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="res_methods.jpg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-qes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Missingness methods by outcome and period.
+</figcaption>
+</figure>
+</div>
+<p>From the comparison of the base-case methods used for the costs and effects between 2009 and 2015, the Figure above shows a marked reduction in the number of methods not clearly described for the effects, compared to those for the costs. A possible reason for this is that, while clinical effectiveness measures are often collected through self-reported questionnaires, which are naturally prone to missingness, cost measures rely more on clinical patient files which may ensure a higher completeness rate. It was not possible to confirm this interpretation in the reviewed studies due to the high proportions of articles not clearly reporting the missing rates in both 2003-2009 and 2009-2015 periods, for effects (<span class="math inline">\(\approx 45\%\)</span> and <span class="math inline">\(\approx 38\%\)</span>) and costs ( <span class="math inline">\(\approx 50\%\)</span> and <span class="math inline">\(\approx 62\%\)</span>). In addition, clinical outcomes are almost invariably the main objective of RCTs and are usually subject to more advanced and standardised analyses. Arguably, costs are often considered as an add-on to the standard trial: for instance, sample size calculations are almost always performed with the effectiveness measure as the only outcome of interest. Consequently, missing data methods are less frequently well thought through for the analysis of the costs. However, this situation is likely to change as cost data from different perspectives (e.g.&nbsp;caregivers, patients, society, etc.) are being increasingly used in trials, leading to the more frequent adoption of self-report cost data which may start to exhibit similar missingness characteristics to effect data.</p>
+<p>The review identified only a few articles using more than one alternative method. In addition, these analyses are typically conducted without any clear justification about their underlying missing data assumptions and may therefore not provide a concrete assessment of the impact of missingness uncertainty. This situation indicates a gap in the literature associated with an under-implementation of sensitivity analysis, which may significantly affect the whole decision-making process outcome, under the perspective of a body who is responsible for providing recommendations about the implementation of alternative interventions for health care matters.</p>
+<p>Limiting the assessment of missingness assumptions to a single case is unlikely to provide a reliable picture of the underlying mechanism. This, in turn, may have a significant impact on the CEA and mislead its conclusions, suggesting the implementation of non-cost-effective treatments. Robustness analyses assess the sensitivity of the results to alternative missing data methods but do not justify the choice of these methods and their underlying assumptions about missingness which may therefore be inappropriate in the specific context analysed. By contrast, sensitivity analyses, which rely on external information to explore plausible alternative methods and missingness assumptions, represent an important and more appropriate tool to provide realistic assessments of the impact of missing data uncertainty on the final conclusions.</p>
 </section>
-<section id="discussion" class="level1">
-<h1>Discussion</h1>
-<p>Descriptive information extracted from the reviewed studies provides some first insights about changes in practice in the years following the publication of the guidelines. First, a clear trend is observed towards an increase in the adoption of a societal and health care perspective and of CUA as the reference base-case analysis approach. Second, a similar increment is observed in the use of recommended instruments for the collection and valuation of health economic outcomes, such as EQ-5D-5L for QALYs and friction method for costs. Most of these changes are in accordance with the 2016 guidelines, which are likely to have played a role in influencing analysts and practitioners towards a clearer and more standardised way to report health economic results.</p>
-<p>When looking at the type of statistical methods used to perform the analysis, an important shift occurs between the two periods towards the use of methods that allow for regression adjustment, with a considerable uptake in the use of SURs and LMMs in the context of empirical analyses. These techniques are strongly supported by the 2016 guidelines in that they allow us to correct for potential bias due to confounding effects, deal with clustered data and formally take into account the correlation between costs and effects. Bootstrapping remains the most popular methods to quantify uncertainty around parameter estimates across both periods. However, the health economic analysis framework requires that the level of complexity of the analysis model is reflected in the way uncertainty surrounding the estimates is generated.</p>
-<p>The transition between the two time periods reveals an increase in the use of MI techniques in the base-case analysis together with a decrease in the overall use of CCA. This change is in line with the 2016 guidelines which warns about the inherent limitations and potential bias of simple methods (e.g.&nbsp;CCA) when compared to MI as the potential reference method to handle missing values. Nevertheless, improvements are still needed given that many studies (more than 6%) performed the analysis under a single missing data assumption. This is not ideal since by definition missing data assumptions can never be checked, making the results obtained under a specific method (i.e.&nbsp;assumption) potentially biased.</p>
+<section id="quality-assessment" class="level2">
+<h2 class="anchored" data-anchor-id="quality-assessment">Quality assessment</h2>
+<p>Generally speaking, most of the reviewed papers achieved an unsatisfactory quality score under the QES. Indeed, the benchmark area on the top-right corner of the graphs is barely reached by less than <span class="math inline">\(7\%\)</span> of the articles, both for cost and effect data.</p>
+<p>Overall, the proportions of the studies associated with the lowest category (E) prevails in the majority of the years, with a similar pattern over time between missing costs and effects. All the articles that are associated with the top category (A) belong to the period 2013-2015, with the highest proportions of articles falling in this category being observed in 2015 for both outcomes. The opportunity of reaching such a target might be precluded by the choice of the method adopted, which may not be able to support less restrictive assumptions about missingness, even when this would be desirable. As a result, when simple methods cannot be fully justified it is necessary to replace them with more flexible ones that can relax assumptions and incorporate more alternatives. In settings such as those involving MNAR, sensitivity analysis might represent the only possible approach to account for the uncertainty due to the missingness in a principled way. However, due to the lack of studies either performing a sensitivity analysis or providing high quality scores on the assumptions, missingness is not adequately addressed in most studies. This could have the serious consequence of imposing too restrictive assumptions about missingness and affect the outcome of decision making.</p>
+</section>
 </section>
 <section id="conclusions" class="level1">
 <h1>Conclusions</h1>
-<p>Given the complexity of the health economics framework, the implementation of simple but likely inadequate analytic approaches may lead to imprecise cost-effectiveness results. This is a potentially serious issue for bodies such as ZIN in the Netherlands that use these evaluations in their decision making, thus possibly leading to incorrect policy decisions about the cost-effectiveness of new health care interventions. Our review shows, over time, a change in common practice with respect to different analysis components in accordance with the recent ZIN’s 2016 guidelines. This is an encouraging movement towards the standardised use of more suitable and robust analytic methods in terms of both statistical, uncertainty and missing data analysis. Improvements are however still needed, particularly in the choice of adequate statistical techniques to deal with the complexity of the data analysed and in the assessment of the impact of alternative missing data assumptions on the results in SA.</p>
-<p><a href="https://www.cambridge.org/core/journals/health-economics-policy-and-law/article/abs/review-of-heath-economic-evaluation-practice-in-the-netherlands-are-we-moving-forward/8A4D0D3A9E7EBC83A65B4283D170FCC6" style="text-align: center; font-size: 2rem"><i class="fa-solid fa-file-pdf" aria-label="file-pdf"></i></a></p>
+<p>Our review shows, over time, a significant change from more to less restrictive methods in terms of the assumptions on the missingness mechanism. This is an encouraging movement towards a more suitable and careful missing data analysis. The results from the disaggregated analysis by year of publication in the later period (2009-2015) indicates the rise of a better and more transparent approach to handle missingness in the latest years of the review, especially in 2015. In particular, compared to the previous years, the articles reviewed from 2015 are associated with a higher proportion of MI methods used in the base-case analysis, a substantial increase in the number of robustness methods implemented, and a better quality score assignment.</p>
+<p>Nevertheless, improvements are still needed as, overall, only a small number of articles provide transparent information about the missing data and almost no study performs a sensitivity analysis. These failings are probably due to the fact that the implications of using methods that do not handle missingness in a principled way are not well-known among practitioners. In addition, the choice of the missing data methods may also be guided by their ease of implementation in standard software packages rather than methodological reasons. This is a potentially serious issue for bodies such as the NICE who use these evaluations in their decision making, thus possibly leading to incorrect policy decisions about the cost-effectiveness of new treatment options.</p>
+<p>The QES represents a valuable tool to improve missing data handling. By carefully thinking about each component in the analysis we are forced to explicitly consider all the assumptions we make about missingness and assess the impact of their variation on final conclusions. The main advantage is a more comparable formalisation of the uncertainty as well as a better indication of possible issues in assessing the cost-effectiveness of new treatments.</p>
+<p><span style="text-align: center; font-size: 2rem"><a href="https://link.springer.com/article/10.1007/s41669-017-0015-6"><i class="ai  ai-open-access"></i></a> &nbsp; <a href="https://github.com/AnGabrio/Talks/blob/master/Literature%20Review/poster.pdf"><i class="fa-solid fa-image" aria-label="image"></i></a> &nbsp; <a href="https://github.com/AnGabrio/Talks/blob/master/Literature%20Review/Presentation_upgrade.pdf"><i class="fa-solid fa-file-powerpoint" aria-label="file-powerpoint"></i></a></span></p>
 
 
 </section>

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Andrea Gabrio - A review of heath economic evaluation practice in the Netherlands: are we moving forward?</title>
+<title>Andrea Gabrio - Bayesian Hierarchical Models for the Prediction of Volleyball Results</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -70,6 +70,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -115,11 +144,7 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#the-zin-2016-guidelines" id="toc-the-zin-2016-guidelines" class="nav-link" data-scroll-target="#the-zin-2016-guidelines">The ZIN 2016 guidelines</a></li>
-  <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods">Methods</a></li>
-  <li><a href="#analytic-approaches" id="toc-analytic-approaches" class="nav-link" data-scroll-target="#analytic-approaches">Analytic approaches</a></li>
-  <li><a href="#missing-data-methods" id="toc-missing-data-methods" class="nav-link" data-scroll-target="#missing-data-methods">Missing data methods</a></li>
-  <li><a href="#discussion" id="toc-discussion" class="nav-link" data-scroll-target="#discussion">Discussion</a></li>
+  <li><a href="#bayesian-methods-in-hta" id="toc-bayesian-methods-in-hta" class="nav-link" data-scroll-target="#bayesian-methods-in-hta">Bayesian methods in HTA</a></li>
   <li><a href="#conclusions" id="toc-conclusions" class="nav-link" data-scroll-target="#conclusions">Conclusions</a></li>
   </ul>
 </nav>
@@ -129,7 +154,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">A review of heath economic evaluation practice in the Netherlands: are we moving forward?</h1>
+<h1 class="title">Bayesian Hierarchical Models for the Prediction of Volleyball Results</h1>
 </div>
 
 
@@ -148,49 +173,43 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
-<p>In the Netherlands, the Dutch National Health Care Institute (Zorginstituut Nederland or ZIN) is the body in charge of issuing recommendations and guidance on good practice in health economic evaluations, not just for pharmaceutical products, but also in relation to other fields of application such as medical devices, long-term care and forensics. In 2016, ZIN issued an update on the guidance for health economic evaluations, which aggregated into a single document and revised three separately published guidelines for pharmacoeconomics evaluation, outcomes research and costing manual. The novel aspects and future policy direction introduced by these guidelines have already been object of discussion, particularly with respect to the potential impact and concerns associated with their implementation in standard health economics practice in the Netherlands. Given the importance covered by these guidelines, an assessment of their impact on economic evaluation practice is desirable.</p>
-<p>The objective of this paper was to review the evolution of health economic evaluation practice in the Netherlands before and after the introduction of the ZIN’s 2016 guidelines. Based on some key components within the health economics framework addressed by the new guidelines, we specifically focus on reviewing the statistical methods, missing data methods and software implemented by health economists. Given the intrinsic complexity of analysing health economics data, the choice of the analytical approaches to deal with these problems as well as transparent information on their implementation is crucial in determining the degree of confidence that decision-makers should have towards cost-effectiveness results obtained from these studies</p>
+<p>The type of data used in economic evaluations typically come from a range of sources, whose evidence is combined to inform HTA decision-making. Traditionally, relative effectiveness data are derived from <em>randomised controlled clinical trials</em> (RCTs), while healthcare resource utilisation, costs and preference-based quality of life data may come from the same study that estimated the clinical effectiveness or not. A number of HTA agencies have developed their own methodological guidelines to support the generation of the evidence required to inform their decisions. In this context, the primary role of economic evaluation for HTA is not the estimation of the quantities of interest (e.g.&nbsp;the computation of point or interval estimation, or hypothesis testing), but to aid decision making. The implication of this is that the standard frequentist analyses that rely on power calculations and <span class="math inline">\(P\)</span>-values to estimate statistical and clinical significance, typically used in RCTs, are not well-suited for addressing these HTA requirements.</p>
+<p>It has been argued that, to be consistent with its intended role in HTA, economic evaluation should embrace a decision-theoretic paradigm and develop ideally within a Bayesian statistical framework to inform two decisions</p>
+<ul>
+<li><p>whether the treatments under evaluation are cost-effective given the available evidence and</p></li>
+<li><p>whether the level of uncertainty surrounding the decision is acceptable (i.e.&nbsp;the potential benefits are worth the costs of making the wrong decision).</p></li>
+</ul>
+<p>This corresponds to quantify the impact of the uncertainty in the evidence on the entire decision-making process (e.g.&nbsp;to what extent the uncertainty in the estimation of the effectiveness of a new intervention affects the decision about whether it is paid for by the public provider).</p>
 </section>
-<section id="the-zin-2016-guidelines" class="level1">
-<h1>The ZIN 2016 guidelines</h1>
-<p>The main objective of the guidelines is to ensure the comparability and quality of health economic evaluations in the Netherlands, therefore facilitating the task of the decision-maker regarding the reimbursement of new health care interventions. Following the example of guidelines issued by decision-making bodies in other countries, including the National Institute for Health and Care Excellence (NICE) in the UK, the recommended features for economic evaluations are summarised in a typical scenario referred to as ‘reference case’, although deviations from it are allowed when properly justified.</p>
-<p>Based on the structure of the reference case, four essential components of a health economic evaluation are identified: framework, analytic approach, input data and reporting. For the purpose of the review, we only focus on these components in the reference case as the main elements upon which evaluating health economics practice.</p>
-</section>
-<section id="methods" class="level1">
-<h1>Methods</h1>
-<p>We performed a bibliographic search in June 2021 using search engines of two online full-text journal repositories: (1) PubMed and (2) Zorginstituut. These sources were chosen to maximise the number of studies that could be accessed given the scoping nature of the review and the lack of a search strategy based on a pre-defined and rigid approach typical of systematic reviews. Articles were considered eligible for the review only if they were cost-effectiveness or cost-utility analyses targeting a Dutch population. To allow the inclusion of a reasonable amount of studies, the key words used in the search strategy were (cost-effectiveness OR cost-utility OR economic evaluation), and we targeted studies published between January 2016 and April 2021.</p>
-</section>
-<section id="analytic-approaches" class="level1">
-<h1>Analytic approaches</h1>
-<p>Almost all reviewed empirical analyses used bootstrapping (95%), although the number of replications varied largely across the studies, with the most popular choices being 5000 (55%) followed by 2000 (29%). Studies showed even more variability in the choice of the methods used in combination with bootstrapping. Seven general classes of statistical approaches were identified, among which unadjusted methods were the most popular choice across both time periods. A clear change in the type of statistical methods used between the two periods is denoted by a strong decrease (from 64 to 39) in the number of unadjusted analyses in 2016–2020 compared to the earlier period, which is compensated by a rise in the number of adjusted analyses using either SUR or linear mixed effects model (LMM) methods.</p>
-<p>From <a href="#fig-heatmap" class="quarto-xref">Figure&nbsp;1</a> we can look at the different type and combination of software programs used as an indication of the implementation preferences of analysts for health economic evaluations. Although in principle the choice of software should have no impact on the quality of the statistical methods implemented, it has been highlighted how use of simpler software (e.g.&nbsp;spreadsheet calculators such as Excel) may become increasingly cumbersome for matching more realistic and therefore complex modelling requirements.</p>
-<div id="fig-heatmap" class="quarto-figure quarto-figure-center quarto-float anchored" width="60%" data-fig-align="center">
+<section id="bayesian-methods-in-hta" class="level1">
+<h1>Bayesian methods in HTA</h1>
+<p>There are several reasons that make the use of Bayesian methods in economic evaluations particularly appealing. First, Bayesian modelling is naturally embedded in the wider scheme of decision theory; by taking a probabilistic approach, based on decision rules and available information, it is possible to explicitly account for relevant sources of uncertainty in the decision process and obtain an <em>optimal</em> course of action. Second, Bayesian methods allow extreme flexibility in modelling using computational algorithms such as <em>Markov Chain Monte Carlo</em> (MCMC) methods; this allows to handle in a relatively easy way the generally sophisticated structure of the relationships and complexities that characterise effectiveness, quality of life and cost data. Third, through the use of prior distributions, the Bayesian approach naturally allows the incorporation of evidence from different sources in the analysis (e.g.&nbsp;expert opinion or multiple studies), which may improve the estimation of the quantities of interest; the process is generally referred to as evidence synthesis and finds its most common application in the use of meta-analytic tools. This may be extremely important when, as it often happens, there is only some partial (imperfect) information to identify the model parameters. In this case analysts are required to develop chain-of-evidence models. When required by the limitations in the evidence base, subjective prior distributions can be specified based on the synthesis and elicitation of expert opinion to identify the model, and their impact on the results can be assessed by presenting or combining the results across a range of plausible alternatives. Finally, under a Bayesian approach, it is straightforward to conduct <em>sensitivity analysis</em> to properly account for the impact of uncertainty in all inputs of the decision process; this is a required component in the approval or reimbursement of a new intervention for many decision-making bodies, such as NICE in the UK.</p>
+<p>The general process of conducting a Bayesian analysis (with a view of using the results of the model to perform an economic evaluation) can be broken down in several steps, which are graphically summarized in <a href="#fig-htaframe" class="quarto-xref">Figure&nbsp;1</a>.</p>
+<div id="fig-htaframe" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center" width="60%">
 <figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-heatmap-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="heatmap_software.png" class="img-fluid figure-img">
+<div aria-describedby="fig-htaframe-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="HTA.jpg" class="img-fluid figure-img">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-heatmap-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1: Heatmap of the combination of software programs used
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-htaframe-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Diagram representation of the process for health economic evaluation.
 </figcaption>
 </figure>
 </div>
-<p>The most popular software was SPSS, chosen by 87 (52%) of the studies, either in the base-case (33%) or secondary (19%) analyses, often used in combination with Excel or by itself. When either STATA (26%) or R (13%) was used in the base-case analysis, SPSS was still the most popular choice in secondary analyses. Other combinations of software were less frequently chosen, even though 38 (23%) of the studies were unclear about the software implemented.</p>
-</section>
-<section id="missing-data-methods" class="level1">
-<h1>Missing data methods</h1>
-<p>Across both periods limited changes are observed in terms of order of choice for missing data methods, with MI being the most popular base-case analysis, followed by complete case analysis (CCA), as the most popular SA choice. However, two noticeable variations in the frequency of these methods are observed between the two periods. First, the proportion of studies using MI in the base-case analysis has considerably increased over time (from 28 to 39%), which is compensated by a decrease in the proportion of less advanced methods such as CCA (from 14 to 5%) and single imputation (SI) (from 21 to 16%). Second, the number of studies not clearly reporting the methods has also considerably decreased (from 12 to 5%). The observed trend between the two periods may be the result of the specific recommendations from the 2016 guidelines in regards to the ‘optimal’ missing data strategy, resulting in a more frequent adoption of MI techniques and, at the same time, a less frequent use of CCA in the base-case analysis. However, in contrast to these guidelines, a large number of studies still does not perform any SA to missing data assumptions (about 65% in 2010–2015 and 63% in 2016–2020).</p>
-<p>Most of the studies lie in the middle and lower parts of the plot, and are associated with a limited or sufficient quality of information. However, only a few of these studies rely on very strong and unjustified missing data assumptions, while the majority provides either adequate justifications or uses methods associated with weak assumptions. Only 11 (14%) studies are associated with both high-quality scores and less restrictive missingness assumptions. No study was associated with either full information or adequate justifications for the assumptions explored in base-case and sensitivity analysis.</p>
-</section>
-<section id="discussion" class="level1">
-<h1>Discussion</h1>
-<p>Descriptive information extracted from the reviewed studies provides some first insights about changes in practice in the years following the publication of the guidelines. First, a clear trend is observed towards an increase in the adoption of a societal and health care perspective and of CUA as the reference base-case analysis approach. Second, a similar increment is observed in the use of recommended instruments for the collection and valuation of health economic outcomes, such as EQ-5D-5L for QALYs and friction method for costs. Most of these changes are in accordance with the 2016 guidelines, which are likely to have played a role in influencing analysts and practitioners towards a clearer and more standardised way to report health economic results.</p>
-<p>When looking at the type of statistical methods used to perform the analysis, an important shift occurs between the two periods towards the use of methods that allow for regression adjustment, with a considerable uptake in the use of SURs and LMMs in the context of empirical analyses. These techniques are strongly supported by the 2016 guidelines in that they allow us to correct for potential bias due to confounding effects, deal with clustered data and formally take into account the correlation between costs and effects. Bootstrapping remains the most popular methods to quantify uncertainty around parameter estimates across both periods. However, the health economic analysis framework requires that the level of complexity of the analysis model is reflected in the way uncertainty surrounding the estimates is generated.</p>
-<p>The transition between the two time periods reveals an increase in the use of MI techniques in the base-case analysis together with a decrease in the overall use of CCA. This change is in line with the 2016 guidelines which warns about the inherent limitations and potential bias of simple methods (e.g.&nbsp;CCA) when compared to MI as the potential reference method to handle missing values. Nevertheless, improvements are still needed given that many studies (more than 6%) performed the analysis under a single missing data assumption. This is not ideal since by definition missing data assumptions can never be checked, making the results obtained under a specific method (i.e.&nbsp;assumption) potentially biased.</p>
+<p>The starting point is the identification of the decision problem, which defines the objective of the economic evaluation (e.g.&nbsp;the interventions being compared, the target population, the relevant time horizon). In line with the decision problem, a statistical model is constructed to describe the (by necessity, limited) knowledge of the underlying clinical pathways. This implies, for example, the definition of suitable models to describe variability in potentially observed data (e.g.&nbsp;the number of patients recovering from the disease because of a given treatment), as well as the epistemic uncertainty in the population parameters (e.g.&nbsp;the underlying probability that a random individual in the target population is cured, if given the treatment under study). At this point, all the relevant data are identified, collected and quantitatively sytnthesised to derive the estimates of the input parameters of interest for the model.</p>
+<p>These parameter estimates (and associated uncertainties) are then fed to the economic model, with the objective of obtaining some relevant summaries indicating the benefits and costs for each intervention under evaluation. Uncertainty analysis represents some sort of <em>detour</em> from the straight path going from the statistical model to the decision analysis: if the output of the statistical model allowed us to know with perfect certainty the <em>true</em> value of the model parameters, then it would be possible to simply run the decision analysis and make the decision. Of course, even if the statistical model were the <em>true</em> representation of the underlying data generating process (which it most certainly is not), because the data may be limited in terms of length of follow up, or sample size, the uncertainty in the value of the model parameters would still remain. This <em>parameter</em> (and <em>structural</em>) uncertainty is propagated throughout the whole process to evaluate its impact on the decision-making. In some cases, although there might be substantial uncertainty in the model inputs, this may not turn out to modify substantially the output of the decision analysis, i.e.&nbsp;the new treatment would be deemed as optimal irrespectively. In other cases, however, even a small amount of uncertainty in the inputs could be associated with very serious consequences. In such circumstances, the decision-maker may conclude that the available evidence is not sufficient to decide on which intervention to select and require more information before a decision can be made.</p>
+<p>The results of the above analysis can be used to inform policy makers about two related decisions:</p>
+<ul>
+<li><p>whether the new intervention is to be considered (on average) <em>value for money</em>, given the evidence base available at the time of decision, and</p></li>
+<li><p>whether the consequences (in terms of net health loss) of making the wrong decision would warrant further research to reduce this <em>decision uncertaint</em>.</p></li>
+</ul>
+<p>While the type and specification of the statistical and economic models vary with the nature of the underlying data (e.g.&nbsp;individual (ILD) level versus aggregated (ALD) data, the decision and uncertainty analyses have a more standardised set up.</p>
 </section>
 <section id="conclusions" class="level1">
 <h1>Conclusions</h1>
-<p>Given the complexity of the health economics framework, the implementation of simple but likely inadequate analytic approaches may lead to imprecise cost-effectiveness results. This is a potentially serious issue for bodies such as ZIN in the Netherlands that use these evaluations in their decision making, thus possibly leading to incorrect policy decisions about the cost-effectiveness of new health care interventions. Our review shows, over time, a change in common practice with respect to different analysis components in accordance with the recent ZIN’s 2016 guidelines. This is an encouraging movement towards the standardised use of more suitable and robust analytic methods in terms of both statistical, uncertainty and missing data analysis. Improvements are however still needed, particularly in the choice of adequate statistical techniques to deal with the complexity of the data analysed and in the assessment of the impact of alternative missing data assumptions on the results in SA.</p>
-<p><a href="https://www.cambridge.org/core/journals/health-economics-policy-and-law/article/abs/review-of-heath-economic-evaluation-practice-in-the-netherlands-are-we-moving-forward/8A4D0D3A9E7EBC83A65B4283D170FCC6" style="text-align: center; font-size: 2rem"><i class="fa-solid fa-file-pdf" aria-label="file-pdf"></i></a></p>
+<p>HTA has been slow to adopt Bayesian methods; this could be due to a reluctance to use prior opinions, unfamiliarity, mathematical complexity, lack of software, or conservatism of the healthcare establishment and, in particular, the regulatory authorities. However, the use of Bayesian approach has been increasingly advocated as an efficient tool to integrate statistical evidence synthesis and parameter estimation with probabilistic decision analysis in an unified framework for HTA. This enables a transparent <em>evidence-based</em> decision modelling, reflecting the uncertainty and the structural relationships in all the available data.</p>
+<p>With respect to trial-based analyses, the flexibility and modularity of the Bayesian modelling structure are well-suited to jointly account for the typical complexities that affect ILD. In addition, prior distributions can be used as convenient means to incorporate external information into the model when the evidence from the data is limited or absent (e.g.&nbsp;for missing values). In the context of evidence synthesis, the Bayesian approach is particularly appealing in that it allows for all the uncertainty and correlation induced by the often heterogeneous nature of the evidence (either ALD only or both ALD and ILD) to be synthesised in a way that can be easily integrated within a decision modelling framework.</p>
+<p>The availability and spread of Bayesian software among practitioners since the late 1990s, such as <code>OpenBUGS</code> or <code>JAGS</code>, has greatly improved the applicability and reduced the computational costs of these models. Thus, analysts are provided with a powerful framework, which has been termed <em>comprehensive decision modelling</em>, for simultaneously estimating posterior distributions for parameters based on specified prior knowledge and data evidence, and for translating this into the ultimate measures used in the decision analysis to inform cost-effectiveness conclusions.</p>
+<p><span style="text-align: center; font-size: 2rem"><a href="https://oxfordre.com/economics/display/10.1093/acrefore/9780190625979.001.0001/acrefore-9780190625979-e-451"><i class="fa-solid fa-file-pdf" aria-label="file-pdf"></i></a></span></p>
 
 
 </section>

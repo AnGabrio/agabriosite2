@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Andrea Gabrio - A review of heath economic evaluation practice in the Netherlands: are we moving forward?</title>
+<title>Andrea Gabrio - missingHE</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -110,26 +110,14 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#the-zin-2016-guidelines" id="toc-the-zin-2016-guidelines" class="nav-link" data-scroll-target="#the-zin-2016-guidelines">The ZIN 2016 guidelines</a></li>
-  <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods">Methods</a></li>
-  <li><a href="#analytic-approaches" id="toc-analytic-approaches" class="nav-link" data-scroll-target="#analytic-approaches">Analytic approaches</a></li>
-  <li><a href="#missing-data-methods" id="toc-missing-data-methods" class="nav-link" data-scroll-target="#missing-data-methods">Missing data methods</a></li>
-  <li><a href="#discussion" id="toc-discussion" class="nav-link" data-scroll-target="#discussion">Discussion</a></li>
-  <li><a href="#conclusions" id="toc-conclusions" class="nav-link" data-scroll-target="#conclusions">Conclusions</a></li>
-  </ul>
-</nav>
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">A review of heath economic evaluation practice in the Netherlands: are we moving forward?</h1>
+<h1 class="title">missingHE</h1>
 </div>
 
 
@@ -146,54 +134,23 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="introduction" class="level1">
-<h1>Introduction</h1>
-<p>In the Netherlands, the Dutch National Health Care Institute (Zorginstituut Nederland or ZIN) is the body in charge of issuing recommendations and guidance on good practice in health economic evaluations, not just for pharmaceutical products, but also in relation to other fields of application such as medical devices, long-term care and forensics. In 2016, ZIN issued an update on the guidance for health economic evaluations, which aggregated into a single document and revised three separately published guidelines for pharmacoeconomics evaluation, outcomes research and costing manual. The novel aspects and future policy direction introduced by these guidelines have already been object of discussion, particularly with respect to the potential impact and concerns associated with their implementation in standard health economics practice in the Netherlands. Given the importance covered by these guidelines, an assessment of their impact on economic evaluation practice is desirable.</p>
-<p>The objective of this paper was to review the evolution of health economic evaluation practice in the Netherlands before and after the introduction of the ZIN’s 2016 guidelines. Based on some key components within the health economics framework addressed by the new guidelines, we specifically focus on reviewing the statistical methods, missing data methods and software implemented by health economists. Given the intrinsic complexity of analysing health economics data, the choice of the analytical approaches to deal with these problems as well as transparent information on their implementation is crucial in determining the degree of confidence that decision-makers should have towards cost-effectiveness results obtained from these studies</p>
-</section>
-<section id="the-zin-2016-guidelines" class="level1">
-<h1>The ZIN 2016 guidelines</h1>
-<p>The main objective of the guidelines is to ensure the comparability and quality of health economic evaluations in the Netherlands, therefore facilitating the task of the decision-maker regarding the reimbursement of new health care interventions. Following the example of guidelines issued by decision-making bodies in other countries, including the National Institute for Health and Care Excellence (NICE) in the UK, the recommended features for economic evaluations are summarised in a typical scenario referred to as ‘reference case’, although deviations from it are allowed when properly justified.</p>
-<p>Based on the structure of the reference case, four essential components of a health economic evaluation are identified: framework, analytic approach, input data and reporting. For the purpose of the review, we only focus on these components in the reference case as the main elements upon which evaluating health economics practice.</p>
-</section>
-<section id="methods" class="level1">
-<h1>Methods</h1>
-<p>We performed a bibliographic search in June 2021 using search engines of two online full-text journal repositories: (1) PubMed and (2) Zorginstituut. These sources were chosen to maximise the number of studies that could be accessed given the scoping nature of the review and the lack of a search strategy based on a pre-defined and rigid approach typical of systematic reviews. Articles were considered eligible for the review only if they were cost-effectiveness or cost-utility analyses targeting a Dutch population. To allow the inclusion of a reasonable amount of studies, the key words used in the search strategy were (cost-effectiveness OR cost-utility OR economic evaluation), and we targeted studies published between January 2016 and April 2021.</p>
-</section>
-<section id="analytic-approaches" class="level1">
-<h1>Analytic approaches</h1>
-<p>Almost all reviewed empirical analyses used bootstrapping (95%), although the number of replications varied largely across the studies, with the most popular choices being 5000 (55%) followed by 2000 (29%). Studies showed even more variability in the choice of the methods used in combination with bootstrapping. Seven general classes of statistical approaches were identified, among which unadjusted methods were the most popular choice across both time periods. A clear change in the type of statistical methods used between the two periods is denoted by a strong decrease (from 64 to 39) in the number of unadjusted analyses in 2016–2020 compared to the earlier period, which is compensated by a rise in the number of adjusted analyses using either SUR or linear mixed effects model (LMM) methods.</p>
-<p>From <a href="#fig-heatmap" class="quarto-xref">Figure&nbsp;1</a> we can look at the different type and combination of software programs used as an indication of the implementation preferences of analysts for health economic evaluations. Although in principle the choice of software should have no impact on the quality of the statistical methods implemented, it has been highlighted how use of simpler software (e.g.&nbsp;spreadsheet calculators such as Excel) may become increasingly cumbersome for matching more realistic and therefore complex modelling requirements.</p>
-<div id="fig-heatmap" class="quarto-figure quarto-figure-center quarto-float anchored" width="60%" data-fig-align="center">
+<p><code>missingHE</code> is a <code>R</code> package, available on CRAN which is aimed at providing some useful tools to analysts in order to handle missing outcome data under a full Bayesian framework in economic evaluations. The package relies on the <code>R</code> package <code>R2jags</code> to implement Bayesian methods via the statistical software <code>JAGS</code> to obtain inferences using <strong>Markov Chain Monte Carlo</strong> (MCMC) methods. Different types of missing data models are implemented in the package, including selection models, pattern mixture models and hurdle models. A range of parametric distributions can be specified when modelling the typical outcomes in an trial-based economic evaluations, namely the effectiveness and cost variables, while simultaneously incorporating different assumptions about the missingness mechanism, which allows to easily perform sensitivity analysis to a range of alternative missing data assumptions according to the modelling choices selected by the user.</p>
+<p><code>missingHE</code> also provides functions, taken and adapted from other <code>R</code> packages, to assess the results of each type of model, including summaries of the posterior distributions of each model parameter, range and imputations of the missing values, different types of model diagnostics to assess convergence of the algorithm, posterior predictive checks, model assessment measures based on the fit to the observed data, and a general summary of the economic evaluations, including the results from probabilistic sensitivity analyses which are automatically performed within a Bayesian modelling framework.</p>
+<p>For example, the function plot can produce graphs, such as those shown in <a href="#fig-plotmis" class="quarto-xref">Figure&nbsp;1</a>, which compare the observed and imputed values for both cost and benefit measures in each treatment group to detect possible concerns about the plausibility of the imputations.</p>
+<div id="fig-plotmis" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center" width="60%">
 <figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-heatmap-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="heatmap_software.png" class="img-fluid figure-img">
+<div aria-describedby="fig-plotmis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="imputed.jpg" class="img-fluid figure-img">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-heatmap-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1: Heatmap of the combination of software programs used
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-plotmis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Plot of observed (black dots) and imputed (red dots and lines) effectiveness and cost data by treatment group.
 </figcaption>
 </figure>
 </div>
-<p>The most popular software was SPSS, chosen by 87 (52%) of the studies, either in the base-case (33%) or secondary (19%) analyses, often used in combination with Excel or by itself. When either STATA (26%) or R (13%) was used in the base-case analysis, SPSS was still the most popular choice in secondary analyses. Other combinations of software were less frequently chosen, even though 38 (23%) of the studies were unclear about the software implemented.</p>
-</section>
-<section id="missing-data-methods" class="level1">
-<h1>Missing data methods</h1>
-<p>Across both periods limited changes are observed in terms of order of choice for missing data methods, with MI being the most popular base-case analysis, followed by complete case analysis (CCA), as the most popular SA choice. However, two noticeable variations in the frequency of these methods are observed between the two periods. First, the proportion of studies using MI in the base-case analysis has considerably increased over time (from 28 to 39%), which is compensated by a decrease in the proportion of less advanced methods such as CCA (from 14 to 5%) and single imputation (SI) (from 21 to 16%). Second, the number of studies not clearly reporting the methods has also considerably decreased (from 12 to 5%). The observed trend between the two periods may be the result of the specific recommendations from the 2016 guidelines in regards to the ‘optimal’ missing data strategy, resulting in a more frequent adoption of MI techniques and, at the same time, a less frequent use of CCA in the base-case analysis. However, in contrast to these guidelines, a large number of studies still does not perform any SA to missing data assumptions (about 65% in 2010–2015 and 63% in 2016–2020).</p>
-<p>Most of the studies lie in the middle and lower parts of the plot, and are associated with a limited or sufficient quality of information. However, only a few of these studies rely on very strong and unjustified missing data assumptions, while the majority provides either adequate justifications or uses methods associated with weak assumptions. Only 11 (14%) studies are associated with both high-quality scores and less restrictive missingness assumptions. No study was associated with either full information or adequate justifications for the assumptions explored in base-case and sensitivity analysis.</p>
-</section>
-<section id="discussion" class="level1">
-<h1>Discussion</h1>
-<p>Descriptive information extracted from the reviewed studies provides some first insights about changes in practice in the years following the publication of the guidelines. First, a clear trend is observed towards an increase in the adoption of a societal and health care perspective and of CUA as the reference base-case analysis approach. Second, a similar increment is observed in the use of recommended instruments for the collection and valuation of health economic outcomes, such as EQ-5D-5L for QALYs and friction method for costs. Most of these changes are in accordance with the 2016 guidelines, which are likely to have played a role in influencing analysts and practitioners towards a clearer and more standardised way to report health economic results.</p>
-<p>When looking at the type of statistical methods used to perform the analysis, an important shift occurs between the two periods towards the use of methods that allow for regression adjustment, with a considerable uptake in the use of SURs and LMMs in the context of empirical analyses. These techniques are strongly supported by the 2016 guidelines in that they allow us to correct for potential bias due to confounding effects, deal with clustered data and formally take into account the correlation between costs and effects. Bootstrapping remains the most popular methods to quantify uncertainty around parameter estimates across both periods. However, the health economic analysis framework requires that the level of complexity of the analysis model is reflected in the way uncertainty surrounding the estimates is generated.</p>
-<p>The transition between the two time periods reveals an increase in the use of MI techniques in the base-case analysis together with a decrease in the overall use of CCA. This change is in line with the 2016 guidelines which warns about the inherent limitations and potential bias of simple methods (e.g.&nbsp;CCA) when compared to MI as the potential reference method to handle missing values. Nevertheless, improvements are still needed given that many studies (more than 6%) performed the analysis under a single missing data assumption. This is not ideal since by definition missing data assumptions can never be checked, making the results obtained under a specific method (i.e.&nbsp;assumption) potentially biased.</p>
-</section>
-<section id="conclusions" class="level1">
-<h1>Conclusions</h1>
-<p>Given the complexity of the health economics framework, the implementation of simple but likely inadequate analytic approaches may lead to imprecise cost-effectiveness results. This is a potentially serious issue for bodies such as ZIN in the Netherlands that use these evaluations in their decision making, thus possibly leading to incorrect policy decisions about the cost-effectiveness of new health care interventions. Our review shows, over time, a change in common practice with respect to different analysis components in accordance with the recent ZIN’s 2016 guidelines. This is an encouraging movement towards the standardised use of more suitable and robust analytic methods in terms of both statistical, uncertainty and missing data analysis. Improvements are however still needed, particularly in the choice of adequate statistical techniques to deal with the complexity of the data analysed and in the assessment of the impact of alternative missing data assumptions on the results in SA.</p>
-<p><a href="https://www.cambridge.org/core/journals/health-economics-policy-and-law/article/abs/review-of-heath-economic-evaluation-practice-in-the-netherlands-are-we-moving-forward/8A4D0D3A9E7EBC83A65B4283D170FCC6" style="text-align: center; font-size: 2rem"><i class="fa-solid fa-file-pdf" aria-label="file-pdf"></i></a></p>
+<p>More information, including new updates, about <code>missingHE</code> can be found on my dedicated <a href="https://github.com/AnGabrio/missingHE">GitHub repository</a> or via the most up to date version of the package on <a href="https://cran.r-project.org/web/packages/missingHE/">CRAN</a>.</p>
+<p><span style="text-align: center; font-size: 2rem"><a href="https://github.com/AnGabrio/short-course/blob/master/slides/workshop-knitr.pdf"><i class="fa-solid fa-file-powerpoint" aria-label="file-powerpoint"></i></a> &nbsp; <a href="https://github.com/AnGabrio/missingHE"><i class="fa-solid fa-code" aria-label="code"></i></a></span></p>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

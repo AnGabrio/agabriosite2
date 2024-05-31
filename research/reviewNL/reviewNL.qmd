@@ -23,9 +23,14 @@ We performed a bibliographic search in June 2021 using search engines of two onl
 
 Almost all reviewed empirical analyses used bootstrapping (95%), although the number of replications varied largely across the studies, with the most popular choices being 5000 (55%) followed by 2000 (29%). Studies showed even more variability in the choice of the methods used in combination with bootstrapping. Seven general classes of statistical approaches were identified, among which unadjusted methods were the most popular choice across both time periods. A clear change in the type of statistical methods used between the two periods is denoted by a strong decrease (from 64 to 39) in the number of unadjusted analyses in 2016–2020 compared to the earlier period, which is compensated by a rise in the number of adjusted analyses using either SUR or linear mixed effects model (LMM) methods.
 
-From @fig-heatmap we can look at the different type and combination of software programs used as an indication of the implementation preferences of analysts for health economic evaluations. Although in principle the choice of software should have no impact on the quality of the statistical methods implemented, it has been highlighted how use of simpler software (e.g. spreadsheet calculators such as Excel) may become increasingly cumbersome for matching more realistic and therefore complex modelling requirements
+From @fig-heatmap we can look at the different type and combination of software programs used as an indication of the implementation preferences of analysts for health economic evaluations. Although in principle the choice of software should have no impact on the quality of the statistical methods implemented, it has been highlighted how use of simpler software (e.g. spreadsheet calculators such as Excel) may become increasingly cumbersome for matching more realistic and therefore complex modelling requirements.
 
-![Heatmap of the combination of software programs used](heatmap_software.png){#fig-heatmap fig-align="center" width=60%}
+::: {#fig-heatmap fig-align="center" width=60%}
+
+![](heatmap_software.png)
+
+Heatmap of the combination of software programs used
+:::
 
 The most popular software was SPSS, chosen by 87 (52%) of the studies, either in the base-case (33%) or secondary (19%) analyses, often used in combination with Excel or by itself. When either STATA (26%) or R (13%) was used in the base-case analysis, SPSS was still the most popular choice in secondary analyses. Other combinations of software were less frequently chosen, even though 38 (23%) of the studies were unclear about the software implemented.
 
@@ -46,3 +51,5 @@ The transition between the two time periods reveals an increase in the use of MI
 # Conclusions
 
 Given the complexity of the health economics framework, the implementation of simple but likely inadequate analytic approaches may lead to imprecise cost-effectiveness results. This is a potentially serious issue for bodies such as ZIN in the Netherlands that use these evaluations in their decision making, thus possibly leading to incorrect policy decisions about the cost-effectiveness of new health care interventions. Our review shows, over time, a change in common practice with respect to different analysis components in accordance with the recent ZIN’s 2016 guidelines. This is an encouraging movement towards the standardised use of more suitable and robust analytic methods in terms of both statistical, uncertainty and missing data analysis. Improvements are however still needed, particularly in the choice of adequate statistical techniques to deal with the complexity of the data analysed and in the assessment of the impact of alternative missing data assumptions on the results in SA.
+
+[{{< fa file-pdf >}}](https://www.cambridge.org/core/journals/health-economics-policy-and-law/article/abs/review-of-heath-economic-evaluation-practice-in-the-netherlands-are-we-moving-forward/8A4D0D3A9E7EBC83A65B4283D170FCC6){style="text-align: center; font-size: 2rem"}

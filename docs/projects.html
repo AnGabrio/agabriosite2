@@ -50,6 +50,8 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-dashboard/datatables.min.css" rel="stylesheet" kdttablesentinel="true">
 <link href="site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/academicons-1.9.2/all.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/academicons-1.9.2/size.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -142,17 +144,20 @@ ul.task-list li input[type="checkbox"] {
 <div class="tab-content bslib-grid html-fill-item html-fill-container" style="display: grid; grid-template-columns: minmax(3em, 1fr);
 grid-auto-rows: minmax(0, 1fr);">
 <div id="all" class="dashboard-page tab-pane show active html-fill-item html-fill-container" data-orientation="rows" aria-labelledby="tab-all">
-<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr) minmax(3em, 1fr) minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr) minmax(3em, 1fr) minmax(3em, 1fr) minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr) minmax(3em, 1fr) minmax(3em, 1fr);
+grid-auto-rows: minmax(0, 1fr);">
 <div class="card html-fill-item html-fill-container bslib-card" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
 <div class="card-body html-fill-item html-fill-container">
-<span style="font-size: 1.5rem; font-weight: bold"><a href="./research/reviewNL/reviewNL.html">A review of heath economic evaluation practice in the Netherlands: are we moving forward?</a></span>
+<span style="font-size: 1.2rem; font-weight: bold"><a href="./research/reviewNL/reviewNL.html">A review of heath economic evaluation practice in the Netherlands: are we moving forward?</a></span>
+<br>
 <div class="quarto-figure quarto-figure-center html-fill-item html-fill-container">
 <figure class="figure">
-<p><img src="img/heatmap_software.png" class="img-fluid figure-img" style="width:40.0%"></p>
+<p><img src="img/heatmap_software.png" class="img-fluid figure-img" style="width:80.0%"></p>
 <figcaption>&nbsp;</figcaption>
 </figure>
 </div>
-<span style="font-size: 0.9rem; font-weight: lighter">In the Netherlands, the Dutch National Health Care Institute (Zorginstituut Nederland or ZIN) is the body in charge of issuing recommendations and guidance on good practice in health economic evaluations, not just for pharmaceutical products, but also in relation to other fields of application such as medical devices, long-term care and forensics.</span>
+<span style="font-size: 0.9rem; font-weight: lighter">We review the evolution of health economic evaluation practice in the Netherlands before and after the introduction of the ZIN’s 2016 guidelines. Based on some key components within the health economics framework addressed by the new guidelines, we specifically focus on reviewing the statistical methods, missing data methods and software implemented by health economists.</span>
 <a href="https://www.cambridge.org/core/journals/health-economics-policy-and-law/article/abs/review-of-heath-economic-evaluation-practice-in-the-netherlands-are-we-moving-forward/8A4D0D3A9E7EBC83A65B4283D170FCC6" style="text-align: center; font-size: 2rem"><i class="fa-solid fa-file-pdf" aria-label="file-pdf"></i></a>
 </div>
 <bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
@@ -160,156 +165,180 @@ grid-auto-rows: minmax(0, 1fr);">
     <span class="bslib-full-screen-enter badge rounded-pill">
         <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
     </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div><div class="card html-fill-item html-fill-container bslib-card" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-body html-fill-item html-fill-container">
+<span style="font-size: 1.2rem; font-weight: bold"><a href="./research/lmmHTA/lmmHTA.html">Linear mixed models to handle missing at random data in trial based economic evaluations</a></span>
+<p><br> <br></p>
+<div class="quarto-figure quarto-figure-center html-fill-item html-fill-container">
+<figure class="figure">
+<p><img src="img/cov_struct_lmm.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>&nbsp;</figcaption>
+</figure>
+</div>
+<span style="font-size: 0.9rem; font-weight: lighter">Linear mixed effects models (LMMs) offer a simple alternative to handle missing data under Missing At Random (MAR) without requiring imputations, and have not been very well explored in the CEA context. In this manuscript, we aim to familiarize readers with LMMs and demonstrate their implementation in trial-based cost-effectiveness analysis.</span>
+<span style="text-align: start; font-size: 0.9rem; font-weight: lighter">With <a href="https://www.bangor.ac.uk/staff/nwms/catrin-plumpton-018729/en">Catrin Plumpton</a> and <a href="https://www.plymouth.ac.uk/staff/sube-banerjee">Sube Banerjee</a> and <a href="https://www.ucl.ac.uk/statistics/dr-baptiste-leurent">Baptiste Leurent</a></span>
+<span style="text-align: center; font-size: 2rem"><a href="https://onlinelibrary.wiley.com/doi/full/10.1002/hec.4510"><i class="fa-solid fa-file-pdf" aria-label="file-pdf"></i></a> &nbsp; <a href="https://github.com/AnGabrio/Code/tree/master/lmm_in_CEA"><i class="fa-solid fa-code" aria-label="code"></i></a></span>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div><div class="card html-fill-item html-fill-container bslib-card" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-body html-fill-item html-fill-container">
+<span style="font-size: 1.2rem; font-weight: bold"><a href="./research/partsurvHTA/partsurvHTA.html">Bayesian Modelling for Partitioned Survival Cost-Utility Analysis</a></span>
+<p><br> <br></p>
+<div class="quarto-figure quarto-figure-center html-fill-item html-fill-container">
+<figure class="figure">
+<p><img src="img/partsurv_model.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>&nbsp;</figcaption>
+</figure>
+</div>
+<span style="font-size: 0.9rem; font-weight: lighter">We extend the current methods for modelling trial-based partitioned survival cost-utility data, taking advantage of the flexibility of the Bayesian approach, and specify a joint probabilistic model for the health economic outcomes. This allows to account for multiple types of data complexities and the dependence relationships between different types of quality of life and cost components.</span>
+<span style="text-align: center; font-size: 2rem"><a href="https://onlinelibrary.wiley.com/doi/full/10.1002/hec.4510"><i class="ai  ai-open-access"></i></a> &nbsp; <a href="https://github.com/AnGabrio/Code/tree/master/partitioned%20survival%20CUA"><i class="fa-solid fa-code" aria-label="code"></i></a></span>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
 </bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+</div>
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr) minmax(3em, 1fr) minmax(3em, 1fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div class="card html-fill-item html-fill-container bslib-card" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-body html-fill-item html-fill-container">
+<span style="font-size: 1.2rem; font-weight: bold"><a href="./research/jointHTA/jointHTA.html">Joint Longitudinal Models for Dealing With Missing at Random Data in Trial-Based Economic Evaluations</a></span>
+<p><br> <br></p>
+<div class="quarto-figure quarto-figure-center html-fill-item html-fill-container">
+<figure class="figure">
+<p><img src="img/cea_data_structure.jpg" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>&nbsp;</figcaption>
+</figure>
+</div>
+<span style="font-size: 0.9rem; font-weight: lighter">In trial-based economic evaluation, restricting the analysis to the complete cases is inefficient and can result in biased estimates, while imputation methods are often implemented under a missing at random (MAR) assumption. We propose the use of joint longitudinal models to extend standard approaches by taking into account the longitudinal structure to improve the estimation of the targeted quantities under MAR.</span>
+<span style="text-align: start; font-size: 0.9rem; font-weight: lighter">With <a href="https://profiles.ucl.ac.uk/28942">Rachael Hunter</a> and <a href="https://orcid.org/0000-0001-7319-4545">Alexina Mason</a> and <a href="https://www.ucl.ac.uk/statistics/people/gianlucabaio">Gianluca Baio</a></span>
+<span style="text-align: center; font-size: 2rem"><a href="https://www.valueinhealthjournal.com/article/S1098-3015%2821%2900042-5/fulltext?_returnURL=https%3A%2F%2Flinkinghub.elsevier.com%2Fretrieve%2Fpii%2FS1098301521000425%3Fshowall%3Dtrue"><i class="fa-solid fa-file-pdf" aria-label="file-pdf"></i></a> &nbsp; <a href="https://github.com/AnGabrio/Code/tree/master/joint%20longitudinal%20models"><i class="fa-solid fa-code" aria-label="code"></i></a></span>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div><div class="card html-fill-item html-fill-container bslib-card" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-body html-fill-item html-fill-container">
+<span style="font-size: 1.2rem; font-weight: bold"><a href="./research/missingHE/missingHE.html">missingHE</a></span>
+<p><br> <br></p>
+<div class="quarto-figure quarto-figure-center html-fill-item html-fill-container">
+<figure class="figure">
+<p><img src="img/imputed.jpg" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>&nbsp;</figcaption>
+</figure>
+</div>
+<span style="font-size: 0.9rem; font-weight: lighter"><code>missingHE</code> is an <code>R</code> package aimed at providing tools to handle missing outcome data under a full Bayesian framework in economic evaluations. The package relies on the package <code>R2jags</code> to implement Bayesian models via <code>JAGS</code> and Markov Chain Monte Carlo (MCMC) methods. Different types of missing data models are implemented in the package, including selection models, pattern mixture models and hurdle models</span>
+<span style="text-align: center; font-size: 2rem"><a href="https://github.com/AnGabrio/short-course/blob/master/slides/workshop-knitr.pdf"><i class="fa-solid fa-file-powerpoint" aria-label="file-powerpoint"></i></a> &nbsp; <a href="https://github.com/AnGabrio/missingHE"><i class="fa-solid fa-code" aria-label="code"></i></a></span>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div><div class="card html-fill-item html-fill-container bslib-card" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-body html-fill-item html-fill-container">
+<span style="font-size: 1.2rem; font-weight: bold"><a href="./research/volley/volley.html">Bayesian Hierarchical Models for the Prediction of Volleyball Results</a></span>
+<p><br> <br></p>
+<div class="quarto-figure quarto-figure-center html-fill-item html-fill-container">
+<figure class="figure">
+<p><img src="img/framework_volley.jpg" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>&nbsp;</figcaption>
+</figure>
+</div>
+<span style="font-size: 0.9rem; font-weight: lighter">We extend and adapt the modelling framework typically used for the analysis of football data for the analysis and prediction of volleyball results in regular seasons. Three different sub-models (points scored, number of sets, winner) which are jointly modelled using a flexible Bayesian parametric approach, which allows to fully propagate the uncertainty for each unobserved quantity and to assess the predictive performance of the model.</span>
+<span style="text-align: center; font-size: 2rem"><a href="https://www.tandfonline.com/doi/full/10.1080/02664763.2020.1723506"><i class="fa-solid fa-file-pdf" aria-label="file-pdf"></i></a> &nbsp; <a href="https://github.com/AnGabrio/Code/tree/master/volleyball"><i class="fa-solid fa-code" aria-label="code"></i></a></span>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+</div>
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr) minmax(3em, 1fr) minmax(3em, 1fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div class="card html-fill-item html-fill-container bslib-card" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-body html-fill-item html-fill-container">
+<span style="font-size: 1.2rem; font-weight: bold"><a href="./research/bookHTA/bookHTA.html">Bayesian Methods for Health Technology Assessment</a></span>
+<p><br> <br></p>
+<div class="quarto-figure quarto-figure-center html-fill-item html-fill-container">
+<figure class="figure">
+<p><img src="img/HTA.jpg" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>&nbsp;</figcaption>
+</figure>
+</div>
+<span style="font-size: 0.9rem; font-weight: lighter">The primary role of economic evaluation for health technology assessment (HTA) is not the estimation of the quantities of interest but to aid decision making. Thus, standard frequentist analyses, who rely on power calculations and p-values, are not well-suited for addressing these HTA requirements. Rather, HTA should embrace a decision-theoretic paradigm to inform two decisions</span>
+<span style="text-align: start; font-size: 0.9rem; font-weight: lighter">With <a href="https://www.york.ac.uk/che/staff/research/andrea-manca/">Andrea Manca</a> and <a href="https://www.ucl.ac.uk/statistics/people/gianlucabaio">Gianluca Baio</a></span>
+<span style="text-align: center; font-size: 2rem"><a href="https://oxfordre.com/economics/display/10.1093/acrefore/9780190625979.001.0001/acrefore-9780190625979-e-451"><i class="fa-solid fa-file-pdf" aria-label="file-pdf"></i></a></span>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div><div class="card html-fill-item html-fill-container bslib-card" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-body html-fill-item html-fill-container">
+<span style="font-size: 1.2rem; font-weight: bold"><a href="./research/reviewQES/reviewQES.html">Missingness Methods in trial-based Cost-Effectiveness Analysis</a></span>
+<p><br> <br></p>
+<div class="quarto-figure quarto-figure-center html-fill-item html-fill-container">
+<figure class="figure">
+<p><img src="img/review_qes.jpg" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>&nbsp;</figcaption>
+</figure>
+</div>
+<span style="font-size: 0.9rem; font-weight: lighter">The purpose of this review is to critically appraise the current literature in within-trial CEAs with respect to the quality of the information reported and the methods used to deal with missingness for both effectiveness and costs. The review complements previous work, covering 2003-2009 (88 articles) with a new systematic review, covering 2009-2015 (81 articles) and focuses on two perspectives</span>
+<span style="text-align: start; font-size: 0.9rem; font-weight: lighter">With <a href="https://orcid.org/0000-0001-7319-4545">Alexina Mason</a> and <a href="https://www.ucl.ac.uk/statistics/people/gianlucabaio">Gianluca Baio</a></span>
+<span style="text-align: center; font-size: 2rem"><a href="https://link.springer.com/article/10.1007/s41669-017-0015-6"><i class="ai  ai-open-access"></i></a> &nbsp; <a href="https://github.com/AnGabrio/Talks/blob/master/Literature%20Review/poster.pdf"><i class="fa-solid fa-image" aria-label="image"></i></a> &nbsp; <a href="https://github.com/AnGabrio/Talks/blob/master/Literature%20Review/Presentation_upgrade.pdf"><i class="fa-solid fa-file-powerpoint" aria-label="file-powerpoint"></i></a></span>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div><div class="card html-fill-item html-fill-container bslib-card" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-body html-fill-item html-fill-container">
+<span style="font-size: 1.2rem; font-weight: bold"><a href="./research/mnarHTA/mnarHTA.html">Nonignorable Missingness Models in Health Technology Assessment</a></span>
+<p><br> <br></p>
+<div class="quarto-figure quarto-figure-center html-fill-item html-fill-container">
+<figure class="figure">
+<p><img src="img/missing_model.jpg" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>&nbsp;</figcaption>
+</figure>
+</div>
+<span style="font-size: 0.9rem; font-weight: lighter">Using a recent randomised trial as our motivating example, we present a Bayesian parametric model for conducting inference on a bivariate health economic longitudinal response. We specify our model to account for the different types of complexities affecting the data while accommodating a sensitivity analysis to explore the impact of alternative missingness assumptions on the inferences and on the decision-making process for health technology assessment</span>
+<span style="text-align: start; font-size: 0.9rem; font-weight: lighter">With <a href="https://people.clas.ufl.edu/daniels/">Michael Daniels</a> and <a href="https://www.ucl.ac.uk/statistics/people/gianlucabaio">Gianluca Baio</a></span>
+<span style="text-align: center; font-size: 2rem"><a href="https://rss.onlinelibrary.wiley.com/doi/full/10.1111/rssa.12522"><i class="fa-solid fa-file-pdf" aria-label="file-pdf"></i></a> &nbsp; <a href="https://github.com/AnGabrio/Talks/blob/master/Longitudinal%20Model/poster_v2.pdf"><i class="fa-solid fa-image" aria-label="image"></i></a> &nbsp; <a href="https://github.com/AnGabrio/Talks/blob/master/Longitudinal%20Model/pres_ictmc_v2.pdf"><i class="fa-solid fa-file-powerpoint" aria-label="file-powerpoint"></i></a> &nbsp; <a href="https://github.com/AnGabrio/Code/tree/master/longitudinal%20model"><i class="fa-solid fa-code" aria-label="code"></i></a></span>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+</div>
 <div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr);
 grid-auto-rows: minmax(0, 1fr);">
-<div class="card cell html-fill-item html-fill-container bslib-card" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card html-fill-item html-fill-container bslib-card" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
 <div class="card-body html-fill-item html-fill-container">
-<div class="cell-output-display html-fill-item html-fill-container">
-<table class="table table-sm table-striped small">
-<colgroup>
-<col style="width: 26%">
-<col style="width: 7%">
-<col style="width: 5%">
-<col style="width: 7%">
-<col style="width: 5%">
-<col style="width: 7%">
-<col style="width: 8%">
-<col style="width: 8%">
-<col style="width: 4%">
-<col style="width: 4%">
-<col style="width: 7%">
-<col style="width: 7%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;"></th>
-<th style="text-align: right;">mpg</th>
-<th style="text-align: right;">cyl</th>
-<th style="text-align: right;">disp</th>
-<th style="text-align: right;">hp</th>
-<th style="text-align: right;">drat</th>
-<th style="text-align: right;">wt</th>
-<th style="text-align: right;">qsec</th>
-<th style="text-align: right;">vs</th>
-<th style="text-align: right;">am</th>
-<th style="text-align: right;">gear</th>
-<th style="text-align: right;">carb</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Mazda RX4</td>
-<td style="text-align: right;">21.0</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">160</td>
-<td style="text-align: right;">110</td>
-<td style="text-align: right;">3.90</td>
-<td style="text-align: right;">2.620</td>
-<td style="text-align: right;">16.46</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">4</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Mazda RX4 Wag</td>
-<td style="text-align: right;">21.0</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">160</td>
-<td style="text-align: right;">110</td>
-<td style="text-align: right;">3.90</td>
-<td style="text-align: right;">2.875</td>
-<td style="text-align: right;">17.02</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">4</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Datsun 710</td>
-<td style="text-align: right;">22.8</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">108</td>
-<td style="text-align: right;">93</td>
-<td style="text-align: right;">3.85</td>
-<td style="text-align: right;">2.320</td>
-<td style="text-align: right;">18.61</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">1</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Hornet 4 Drive</td>
-<td style="text-align: right;">21.4</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">258</td>
-<td style="text-align: right;">110</td>
-<td style="text-align: right;">3.08</td>
-<td style="text-align: right;">3.215</td>
-<td style="text-align: right;">19.44</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">1</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Hornet Sportabout</td>
-<td style="text-align: right;">18.7</td>
-<td style="text-align: right;">8</td>
-<td style="text-align: right;">360</td>
-<td style="text-align: right;">175</td>
-<td style="text-align: right;">3.15</td>
-<td style="text-align: right;">3.440</td>
-<td style="text-align: right;">17.02</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">2</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Valiant</td>
-<td style="text-align: right;">18.1</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">225</td>
-<td style="text-align: right;">105</td>
-<td style="text-align: right;">2.76</td>
-<td style="text-align: right;">3.460</td>
-<td style="text-align: right;">20.22</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">1</td>
-</tr>
-</tbody>
-</table>
+<span style="font-size: 1.2rem; font-weight: bold"><a href="./research/hurdleHTA/hurdleHTA.html">Bayesian Modelling for Health Economic Evaluations</a></span>
+<p><br> <br></p>
+<div class="quarto-figure quarto-figure-center html-fill-item html-fill-container">
+<figure class="figure">
+<p><img src="img/modelAG.jpg" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>&nbsp;</figcaption>
+</figure>
 </div>
-</div>
-<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
-    <template>Expand</template>
-    <span class="bslib-full-screen-enter badge rounded-pill">
-        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
-    </span>
-</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
-</div>
-<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr) minmax(3em, 1fr);
-grid-auto-rows: minmax(0, 1fr);">
-<div class="card html-fill-item html-fill-container bslib-card" data-title="Interactive figures" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
-<div class="card-header"><div class="card-title html-fill-item html-fill-container">Interactive figures</div></div>
-<div class="card-body html-fill-item html-fill-container">
-<a href="#visualisation">Link to visualisation page</a>
-<p>Text and table</p>
-</div>
-<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
-    <template>Expand</template>
-    <span class="bslib-full-screen-enter badge rounded-pill">
-        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
-    </span>
-</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div><div class="card html-fill-item html-fill-container bslib-card" data-title="Interactive figures" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
-<div class="card-header"><div class="card-title html-fill-item html-fill-container">Interactive figures</div></div>
-<div class="card-body html-fill-item html-fill-container">
-<p>Text and tables</p>
+<span style="font-size: 0.9rem; font-weight: lighter">Our proposed modelling framework allows jointly tackling of the different complexities that affect the data in a relatively easy way by means of its modular structure and flexible choice for the distributions of the QALYs and cost variables. We specifically focus on appropriately modelling spikes at the boundary and missingness, as they have substantial implications in terms of cost-effectiveness results.</span>
+<span style="text-align: start; font-size: 0.9rem; font-weight: lighter">With <a href="https://orcid.org/0000-0001-7319-4545">Alexina Mason</a> and <a href="https://www.ucl.ac.uk/statistics/people/gianlucabaio">Gianluca Baio</a></span>
+<span style="text-align: center; font-size: 2rem"><a href="https://onlinelibrary.wiley.com/doi/full/10.1002/sim.8045"><i class="fa-solid fa-file-pdf" aria-label="file-pdf"></i></a> &nbsp; <a href="https://github.com/AnGabrio/Talks/blob/master/Hurdle%20Model/poster.pdf"><i class="fa-solid fa-image" aria-label="image"></i></a> &nbsp; <a href="https://github.com/AnGabrio/Talks/blob/master/Hurdle%20Model/Presentation_HE_seminar.pdf"><i class="fa-solid fa-file-powerpoint" aria-label="file-powerpoint"></i></a> &nbsp; <a href="https://github.com/AnGabrio/Code/tree/master/structural%20ones"><i class="fa-solid fa-code" aria-label="code"></i></a></span>
 </div>
 <bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
     <template>Expand</template>
