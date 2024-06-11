@@ -31,7 +31,15 @@ The three tutorials are:
 
 I believe these tutorials provide a reasonable summary about the key elements for anyone who would like to use the package but is a bit uncertain about what he or she can actually do with the functions and to which extent customisation is possible. Fot the moment the `vignettes` are only available from my [GitHub](https://github.com/AnGabrio/missingHE) version of the package (1.4.1) and can be accessed by installing the package using the command
 
+```{r, eval=FALSE, echo=TRUE, message=FALSE, warning=FALSE}
+devtools::install_github("AnGabrio/missingHE", build_vignettes = TRUE)
+```
+
 and then typing 
+
+```{r, eval=FALSE, echo=TRUE, message=FALSE, warning=FALSE}
+utils::browseVignettes(package = "missingHE")
+```
 
 Note that you need to locally install the packages `devtools` and `utils` to access their functions. As soon as I have a bit of time I will update the version on [CRAN](https://cran.r-project.org/web/packages/missingHE) to make them available from there as well. I spent a bit of time creating these tutorials and I hope people will find them useful to understand the package. In case anything is still unclear, feel free to contact me to ask questions.
 
