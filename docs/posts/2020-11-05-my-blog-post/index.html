@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Andrea Gabrio">
+<meta name="dcterms.date" content="2020-11-05">
 
-<title>Andrea Gabrio - Linear mixed models to handle missing at random data in trial based economic evaluations</title>
+<title>Andrea Gabrio - A couple of updates</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -40,8 +42,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
-<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -143,29 +143,49 @@ window.Quarto = {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods">Methods</a></li>
-  <li><a href="#conclusions" id="toc-conclusions" class="nav-link" data-scroll-target="#conclusions">Conclusions</a></li>
-  </ul>
-</nav>
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Linear mixed models to handle missing at random data in trial based economic evaluations</h1>
-</div>
+<h1 class="title">A couple of updates</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">Quarto</div>
+    <div class="quarto-category">R</div>
+    <div class="quarto-category">Academia</div>
+    <div class="quarto-category">Health Economics</div>
+    <div class="quarto-category">publication</div>
+  </div>
+  </div>
 
 
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Author</div>
+  <div class="quarto-title-meta-heading">Affiliation</div>
+  
+    <div class="quarto-title-meta-contents">
+    <p class="author"><a href="https://angabrio.github.io/agabriosite2/">Andrea Gabrio</a> <a href="https://orcid.org/0000-0002-7650-4534" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            <a href="https://www.maastrichtuniversity.nl/research/methodology-and-statistics">
+            Maastricht University
+            </a>
+          </p>
+      </div>
+  </div>
 
 <div class="quarto-title-meta">
 
-    
+      
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">November 5, 2020</p>
+    </div>
+  </div>
   
     
   </div>
@@ -175,43 +195,24 @@ window.Quarto = {
 </header>
 
 
-<section id="introduction" class="level1">
-<h1>Introduction</h1>
-<p>Cost‐effectiveness analyses (CEAs) conducted alongside randomised controlled trials are an important source of information for decision-makers in the process of technology appraisal (Ramsey et al., 2015). The analysis is based on healthcare outcome data and health service use, typically collected at multiple time points and then combined into overall measures of effectiveness and cost. A popular approach to handle missingness is to discard the participants with incomplete observations (complete case analysis or CCA), allowing for derivation of the overall measures based on the completers alone. We note that slightly different definitions of CCA are possible, depending on the form of the model of interest, the type of missingness and the inclusion of observed covariates. This approach, although appealing by its simplicity, has well-recognised limitations including loss of efficiency and an increased risk of bias. We propose the use of linear mixed effects models (LMMs) as an alternative approach under MAR. LMMs are commonly used for the modelling of dependent data (e.g.&nbsp;repeated-measures) and belong to the general class of likelihood-based methods. LMMs appear surprisingly uncommon for the analysis of repeated measures in trial-based CEA, perhaps because of a lack of awareness or familiarity with fitting LMMs.</p>
-</section>
-<section id="methods" class="level1">
-<h1>Methods</h1>
-<p>Linear mixed model extends the usual linear model framework by the addition of “random effect” terms, which can take into account the dependence between observations.</p>
-<p><span id="eq-lmm"><span class="math display">\[
-Y_{ij}=\beta_1+\beta_2 X_{i1}+\ldots+\beta_(P+1) X_{iP}+\omega_i+\epsilon_{ij},
-\tag{1}\]</span></span></p>
-<p>where <span class="math inline">\(Y_{ij}\)</span> denotes the outcome repeatedly collected for each individual <span class="math inline">\(i=1,\ldots,N\)</span> at multiple times <span class="math inline">\(j=1,\ldots,J\)</span>. The model parameters commonly referred to as fixed effects include an intercept <span class="math inline">\(\beta_1\)</span> and the coefficients <span class="math inline">\((\beta_2,\ldots,\beta_{(P+1)})\)</span> associated with the predictors <span class="math inline">\(X_{i1},\ldots,X_{iP}\)</span>, while <span class="math inline">\(\omega_i\)</span> and <span class="math inline">\(\epsilon_{ij}\)</span> are two random terms: <span class="math inline">\(\epsilon_{ij}\)</span> is the usual error term and <span class="math inline">\(\omega_i\)</span> is a random intercept which captures variation in outcomes between individuals. The models can be extended to deal with more complex structures, for example by allowing the effect of the covariates to vary across individuals (random slope) or a different covariance structure of the errors. LMMs can be fitted even if some outcome data are missing and provide correct inferences under MAR.</p>
-<p>A particular type of LMMs commonly used in the analysis of repeated measures in clinical trials is referred to as Mixed Model for Repeated Measurement (MMRM). The model includes a categorical effect for time, an interaction between time and treatment arm, and allows errors to have different variance and correlation over time (i.e.&nbsp;unstructured covariance structure). <a href="#fig-covstruct" class="quarto-xref">Figure&nbsp;1</a> shows some examples of possible covariance structures that may be explored for LMMs.</p>
-<div id="fig-covstruct" class="quarto-figure quarto-figure-center quarto-float anchored" width="60%" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-covstruct-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="cov_struct_lmm.png" class="img-fluid figure-img">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-covstruct-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1: Some examples of covariance structures in LMM
-</figcaption>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="featured.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
 </figure>
 </div>
-<p>Incremental (between-group) or marginal (within-group) estimates for aggregated outcomes over the trial period, such as quality-adjusted life years (QALYs) or total costs can be retrieved as linear combinations of the parameter estimates from <a href="#eq-lmm" class="quarto-xref">Equation&nbsp;1</a>. For example, the mean difference in total cost is obtained by summing up the estimated differences at each follow-up point, while differences on a QALY scale can be obtained as weighted linear combinations of the coefficient estimates of the utility model.</p>
-</section>
-<section id="conclusions" class="level1">
-<h1>Conclusions</h1>
-<p>We believe LMMs represent an alternative approach which can overcome some of these limitations.</p>
-<ul>
-<li><p>First, practitioners may be more comfortable with the standard regression framework.</p></li>
-<li><p>Second, LMMs can be tailored to address other data features (e.g.&nbsp;cluster-randomised trials or non-normal distribution) while also easily combined with bootstrapping.</p></li>
-<li><p>Third, LMMs do not rely on imputation, and results are therefore deterministic and easily reproducible, whereas the Monte Carlo error associated with multiple imputation may cause results to vary from one imputation to another, unless the number of imputations is sufficiently large.</p></li>
-</ul>
-<p>Although the methodology illustrated is already known, particularly in the area of statistical analyses, to our knowledge LMMs have rarely been applied to health economic data collected alongside randomised trials. We believe the proposed methods is preferable to a complete-case analysis when CEA data are incomplete, and that it can offer an interesting alternative to imputation methods.</p>
-<p><span style="text-align: center; font-size: 2rem"><a href="https://onlinelibrary.wiley.com/doi/full/10.1002/hec.4510"><i class="fa-solid fa-file-pdf" aria-label="file-pdf"></i></a> &nbsp; <a href="https://github.com/AnGabrio/Code/tree/master/lmm_in_CEA"><i class="fa-solid fa-code" aria-label="code"></i></a></span></p>
+<p>Finally some exciting updates! I really need some good news after all that happened this year. So, first of all I have recently found out that one of the paper I co-authored got published early this year but I actually forgot to check it. The work is an interesting <a href="https://ascopubs.org/doi/abs/10.1200/JCO.2020.38.6_suppl.204">long-term CEA</a> for a new drug in prostate cancer patients, extrapolating the data from an RCT named STAMPEDE. I was only partially involved with this work, which has been mostly done by the talented and always cheerful <a href="https://iris.ucl.ac.uk/iris/browse/profile?upi=CSCLA53">Caroline Clarke</a> with whom I collaborated during my post-doc experience at UCL. My contribution mostly resolved about double checking the R code for the model which, I have to say, was pretty sophisticated and not always clear given that was originally done by someone else (I we know how understanding someone else’s code can be an hard task). Overall, I am really happy for this paper which I hope may be of interest to someone specialised in that type of analysis and population.</p>
+<p>Next, I am also proud of having contributed to the third round for the course “Understanding Health Economics in Clinical Trials”, which I delivered together with my ex-colleagues and co-members of the HEART team from UCL. This is the third time we have delivered the course in the past two years and I was really impressed by how far we have come since our first attempt. The structure of the course is now very nice and most of the people attending out last edition (in online format of course, thanks 2020!) provided very nice feedback. This, I believe, was the last time we offered the course for free and from the next time we will start charging a small fee to the participants. We have some minor adjustments to make in a couple of sessions, but overall I feel pretty good about it. I would like to thank all my HEART buddies, with a special mention to <a href="https://iris.ucl.ac.uk/iris/browse/profile?upi=EKUZN72">Ekaterina Bordea</a>, with whom I share the delivery of the final session of the course. Although we were a bit strict on time, and I ended up taking most of it (sorry Ekaterina!), we both got very positive comments from the attendants. I hope I will still be involved with these guys for the future editions of the course as it was really fun.</p>
+<p>Aslo, a quick update about my acadmic work. I have written an abstract for a paper together with some very nice people involved in missing data analysis in CEA, including the amazing <a href="https://www.lshtm.ac.uk/aboutus/people/leurent.baptiste">Baptiste Leurent</a> and <a href="https://www.bangor.ac.uk/health-sciences/staff/catrin-plumpton/en">Catrin Plumpton</a>. We submitted the abstract to <a href="https://hesg.org.uk/meetings/winter-2021-the-london-school-of-hygiene-tropical-medicine/">HESG 2021</a> which has been accepted as a presentation. We still need to write up the actual paper which we need to submit by the end of this month but I am confident we will make it. This work is again about missing data in CEA but based on a different perspective compared with the standard imputation approach and instead explores the use of mixed models as a possible alternative under some assumptions. I really enjoyed working on this, especially with Baptiste with whom I started working on this quite a few months ago. I am not sure I will be able to be present at HESG as I have some heavy teaching duties in Maastircht in that period but I look forward receiving some feedback for our idea.</p>
+<p>I have also found some time to upload on ArXiv a <a href="https://arxiv.org/search/stat?searchtype=author&amp;query=Gabrio%2C+A">drafted version</a> for a paper I strated working on about one year ago at UCL. The work is a sort of experiment for me where I tried to apply some Bayesian methods for jointly modelling patient-level partitioned survival cost-utility data. The idea is pretty nice, I think, but I will probably need to polish off a few things before finalising the paper. I was also excited to implement something in <a href="https://mc-stan.org/">STAN</a> which I have started using more frequently in the last months. Although in my experience other Bayesian software seem to be pretty good for different analyses, I think STAN has a great potential in the future, especially thanks to all the support and community posting online solutions and code for different types of problems and analyses.</p>
+<p>Finally, I have been involved in some stats teaching for a master course in epidemiology at my affiliated faculty <a href="https://www.maastrichtuniversity.nl/about-um/faculties/faculty-health-medicine-and-life-sciences">FHML</a> at UM. Everyting was done online, but overall I was happy about how I delivered my sessions of the course and with the feedback I received from the sudents. This was my first teaching experience at UM and, considering the special circumstances most of us are in this year, I think I managed pretty good. Next month I will involved in the marking of the exams for this course while from Jan 2021 I will be quite busy with lots of courses and a quite frightening time schedule. Good luck to me!</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://media.giphy.com/media/xT5LMLKAxV7XswLQsw/giphy.gif" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<p>So, lots of news but this is also becuase I did not find much time in the past weeks to update my blog. I hope to be more consistent in the future but you never know, especially this year. One thing I am looking for is to explore and visit Maastricht for which I haven’t had a chance since I started my contract last September. Everyone says that the Christmas market is particularly beautiful but this year there won’t be one because of <span class="math inline">\(\ldots\)</span> well 2020!</p>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
